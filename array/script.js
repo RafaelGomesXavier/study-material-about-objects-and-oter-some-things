@@ -74,3 +74,28 @@ const totalCompras = compras.reduce((acc, item) => {
 },0)
 console.log(totalCompras);
 }
+
+
+
+
+// Selecione cada curso e retorne um array
+// com objetos contendo o titulo, descrição
+// aulas e horas de cada curso.
+
+
+
+const cursos = document.querySelectorAll('.curso');
+const cursosArray = Array.prototype.map.call(cursos, (curso) => {
+    const titulo = curso.querySelector('.titulo').innerText;
+    const descricao = curso.querySelector('.descricao').innerText;
+    const aulas = curso.querySelector('.aulas').innerText;
+    const horas = curso.querySelector('.horas').innerText;
+    return {
+        titulo,
+        descricao,
+        aulas,
+        horas,
+    }
+    
+})
+console.log(cursosArray);
