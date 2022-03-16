@@ -22,3 +22,7 @@ listaPrecos.forEach((item) => {
   console.log(item)
 });
 console.log(somaTotal.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'}));
+
+
+listaPrecos
+console.log(listaPrecos)
