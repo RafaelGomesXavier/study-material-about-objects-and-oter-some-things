@@ -115,15 +115,18 @@ const aleatorio = Math.floor(Math.random() * (2000 - 1050 + 1) + 1050);
 console.log(aleatorio);
 
 // Retorne o maior número da lista abaixo
-// const numeros1 = "4, 5, 20, 8, 9";
-// const maior = Math.max.apply(null, numeros1);
-// console.log(maior)
+const numeros1 = "4, 5, 20, 8, 9";
+const numeroLimpo  = numeros1.split(', ').reduce((acc, item) => {
+  if(acc > item) return item
+  else return acc
+});
+console.log(numeroLimpo);
 
 // Crie uma função para limpar os preços
 // e retornar os números com centavos arredondados
 // depois retorne a soma total
 
-const listaPrecos = ["R$ 59,99", " R$ 100,222", "R$ 230   ", "r$ 200"];
+const listaPrecos = ["R$ 59,99", " R$ 200,222", "R$ 230   ", "r$ 200"];
 
 function limparValor() {
   let valor = 0;
@@ -136,8 +139,21 @@ function limparValor() {
     valor += +valorLimpo.toFixed(2);
   });
   console.log(valor);
-  console.log(listaPrecos);
+  return listaPrecos;
 }
+limparValor();
+const original = listaPrecos.slice();
+
+const maiorPreco = original.reduce((acc, item) => {
+    let itemLimpo = +item.toUpperCase().replace('R$','').trim().replace(',','.')
+    itemLimpo = itemLimpo;
+
+    if(acc > itemLimpo) return acc
+    else return itemLimpo
+},0)
+console.log(maiorPreco)
+
+
 
 /*
 clie uma função construtora de pessoas.
@@ -264,6 +280,10 @@ console.log(cursoArray);
 
 // Retorne uma lista com os números maiores que 180
 const numeros2 = [3, 44, 333, 23, 122, 322, 33];
+const numeroFiltrado = numeros2.filter((n) => {
+  return n > 180;
+});
+console.log(numeroFiltrado);
 
 // Verifique se Baixo faz parte
 // da lista de instrumentos e retorne true
@@ -345,14 +365,13 @@ function novosElementos(tag, classe, conteudo) {
   classe ? elemento.classList.add(classe) : null;
   conteudo ? (elemento.innerText = conteudo) : null;
 
-  return console.log(elemento)
+  return console.log(elemento);
 }
 
 novosElementos("h2", "ativo", "esse é o conteudo");
-const aaaa = novosElementos.bind(null, 'h1', 'titulo');
+const aaaa = novosElementos.bind(null, "h1", "titulo");
 
-aaaa('Salve')
-
+aaaa("Salve");
 
 // Crie uma nova função utilizando o anterior como base
 // essa nova função devera sempre criar h1
